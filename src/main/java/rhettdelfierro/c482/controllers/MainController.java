@@ -2,11 +2,8 @@ package rhettdelfierro.c482.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,46 +25,47 @@ public class MainController implements Initializable {
     @FXML
     private TextField searchProductTxt;
 
-    @FXML
-    private void changeScene(ActionEvent event, String viewName) throws IOException {
-        int height = 1000;
-        int width = 530;
-        if (viewName == "main") {
-            height = 530;
-            width = 1000;
-        }
-        else if (viewName == "modify-part" || viewName == "add-part") {
-            height = 530;
-            width = 500;
-        } else if (viewName == "modify-product" || viewName == "add-product") {
-            height = 600;
-            width = 1000;
-        }
+    Helpers helpers = new Helpers();
 
-        stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/" + viewName + ".fxml"));
-        stage.setScene(new Scene(scene, width, height));
-        stage.show();
-    }
 
+    /**
+     * Helper method to change scenes with selected part loaded.
+     * @param event Action event
+     * @throws IOException
+     */
     @FXML
     void onActionModifyPart(ActionEvent event) throws IOException {
-        changeScene(event, "modify-part");
+        helpers.changeScene(event, "modify-part");
     }
 
+    /**
+     * Helper method to change scenes with selected product loaded.
+     * @param event Action event
+     * @throws IOException
+     */
     @FXML
     void OnActionModifyProduct(ActionEvent event) throws IOException {
-        changeScene(event, "modify-product");
+        helpers.changeScene(event, "modify-product");
     }
 
+    /**
+     * Helper method to change scenes
+     * @param event Action event
+     * @throws IOException
+     */
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
-        changeScene(event, "add-part");
+        helpers.changeScene(event, "add-part");
     }
 
+    /**
+     * Helper method to change scenes
+     * @param event Action event
+     * @throws IOException
+     */
     @FXML
     void onActionAddProduct(ActionEvent event) throws IOException {
-        changeScene(event, "add-product");
+        helpers.changeScene(event, "add-product");
     }
 
     @FXML

@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AddProduct implements Initializable {
-
+    Helpers helpers = new Helpers();
     @FXML
     void goToMainScreen(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
