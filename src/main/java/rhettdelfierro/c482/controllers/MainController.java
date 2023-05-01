@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * MainController Initial screen of the app.
+ */
 public class MainController implements Initializable {
     @FXML
     private Label welcomeText;
