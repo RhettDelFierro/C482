@@ -4,6 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import rhettdelfierro.c482.models.InHouse;
+import rhettdelfierro.c482.models.Inventory;
 
 import java.io.IOException;
 
@@ -19,6 +21,13 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+        InHouse part1 = new InHouse(1, "Part 1", 1.99, 1, 1, 1, 1);
+        InHouse part2 = new InHouse(2, "Part 2", 2.99, 2, 2, 2, 2);
+        InHouse part3 = new InHouse(3, "Part 3", 3.99, 3, 3, 3, 3);
+        Inventory.addPart(part1);
+        Inventory.addPart(part2);
+        Inventory.addPart(part3);
+
         launch();
     }
 }

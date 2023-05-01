@@ -52,7 +52,7 @@ public class AddProduct implements Initializable {
     private TextField maxTxt;
 
     @FXML
-    private TextField mixTxt;
+    private TextField minTxt;
 
     @FXML
     private Button onActionAddPart;

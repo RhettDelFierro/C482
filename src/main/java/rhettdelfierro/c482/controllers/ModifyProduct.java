@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Part;
 
 import java.net.URL;
@@ -47,7 +48,7 @@ public class ModifyProduct implements Initializable {
     private TextField maxTxt;
 
     @FXML
-    private TextField mixTxt;
+    private TextField minTxt;
 
     @FXML
     private Button onActionAddPart;
@@ -77,6 +78,6 @@ public class ModifyProduct implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        allPartsTbl.setItems(Inventory.getAllParts());
     }
 }
