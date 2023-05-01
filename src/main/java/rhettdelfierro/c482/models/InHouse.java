@@ -8,6 +8,7 @@ public class InHouse extends Part {
         this.machineId = machineId;
     }
 
+    // getters and setters
     /**
      * @return the machineId
      */
