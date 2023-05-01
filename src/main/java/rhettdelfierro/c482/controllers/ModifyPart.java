@@ -2,13 +2,15 @@ package rhettdelfierro.c482.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,16 +47,6 @@ public class ModifyPart implements Initializable {
     private RadioButton partOutsourcedRBtn;
 
     /**
-     * Action event handler for clicking the Cancel Button. This will return to the main screen.
-     *
-     * @param event the action event
-     */
-    @FXML
-    void onActionCancelUpdatePart(ActionEvent event) {
-
-    }
-
-    /**
      * Action event handler for choosing the Outsource Radio Button
      *
      * @param event the action event
@@ -80,8 +72,26 @@ public class ModifyPart implements Initializable {
      * @param event the action event
      */
     @FXML
-    void onActionUpdatePart(ActionEvent event) {
+    void onActionUpdatePart(ActionEvent event) throws IOException {
+        goToMainScreen(event);
+    }
 
+    /**
+     * Action event handler for clicking the Cancel Button. This will return to the main screen.
+     *
+     * @param event the action event
+     */
+    @FXML
+    void onActionCancelUpdatePart(ActionEvent event) throws IOException {
+        goToMainScreen(event);
+    }
+
+    @FXML
+    void goToMainScreen(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
+        Parent scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/main.fxml"));
+        stage.setScene(new Scene(scene, 1000, 530));
+        stage.show();
     }
 
     @Override

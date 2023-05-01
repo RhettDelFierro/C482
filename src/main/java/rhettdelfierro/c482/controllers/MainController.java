@@ -44,7 +44,6 @@ public class MainController implements Initializable {
             width = 1000;
         }
 
-        System.out.println("Changing scene to " + viewName);
         stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
         scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/" + viewName + ".fxml"));
         stage.setScene(new Scene(scene, width, height));
