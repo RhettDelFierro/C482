@@ -65,12 +65,12 @@
                               <Insets right="15.0" top="20.0" />
                            </padding>
                         </GridPane>
-                        <TableView prefHeight="244.0" prefWidth="454.0">
+                        <TableView fx:id="partsTableView" prefHeight="244.0" prefWidth="454.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Part ID" />
-                            <TableColumn prefWidth="112.0" text="Part Name" />
-                              <TableColumn prefWidth="124.0" text="Inventory Level" />
-                              <TableColumn prefWidth="122.0" text="Price/Cost per Unit" />
+                            <TableColumn fx:id="partIdCol" prefWidth="75.0" text="Part ID" />
+                            <TableColumn fx:id="partNameCol" prefWidth="112.0" text="Part Name" />
+                              <TableColumn fx:id="partInventoryLvlCol" prefWidth="124.0" text="Inventory Level" />
+                              <TableColumn fx:id="partPriceCol" prefWidth="122.0" text="Price/Cost per Unit" />
                           </columns>
                         </TableView>
                         <GridPane prefHeight="61.0" prefWidth="434.0">
@@ -141,12 +141,12 @@
                               <Insets right="15.0" top="20.0" />
                            </padding>
                         </GridPane>
-                        <TableView prefHeight="244.0" prefWidth="454.0">
+                        <TableView fx:id="productsTableView" prefHeight="244.0" prefWidth="454.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Product ID" />
-                              <TableColumn prefWidth="112.0" text="Product Name" />
-                              <TableColumn prefWidth="124.0" text="Inventory Level" />
-                              <TableColumn prefWidth="108.0" text="Price/Cost per Unit" />
+                              <TableColumn fx:id="productIdCol" prefWidth="75.0" text="Product ID" />
+                              <TableColumn fx:id="productNameCol" prefWidth="112.0" text="Product Name" />
+                              <TableColumn fx:id="productInventoryLvlCol" prefWidth="124.0" text="Inventory Level" />
+                              <TableColumn fx:id="productPriceCol" prefWidth="108.0" text="Price/Cost per Unit" />
                            </columns>
                         </TableView>
                         <GridPane prefHeight="61.0" prefWidth="434.0">
@@ -186,7 +186,8 @@
                   </VBox>
                </center>
             </BorderPane>
-         </children></HBox>
+         </children>
+      </HBox>
       <HBox layoutX="830.0" layoutY="454.0" prefHeight="62.0" prefWidth="140.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onActionExitProgram" text="Exit">

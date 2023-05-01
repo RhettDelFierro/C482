@@ -50,7 +50,6 @@ public class AddPart implements Initializable {
     @FXML
     private RadioButton partOutsourcedRBtn;
 
-    Helpers helpers = new Helpers();
     /**
      * Action event handler for choosing the Outsource Radio Button
      * @param event the action event
@@ -75,7 +74,7 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionCancelAddPart(ActionEvent event) throws IOException{
-        helpers.changeScene(event, "main");
+        Helpers.changeScene(event, "main");
     }
 
     /**
@@ -86,7 +85,7 @@ public class AddPart implements Initializable {
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
         System.out.println("Save Button Clicked");
-        helpers.changeScene(event, "main");
+        Helpers.changeScene(event, "main");
     }
 
     @FXML

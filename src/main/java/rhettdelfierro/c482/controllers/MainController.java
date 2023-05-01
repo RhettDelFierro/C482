@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,14 +20,41 @@ public class MainController implements Initializable {
     Stage stage;
     Parent scene;
 
+    @FXML
+    private TableColumn<?, ?> partIdCol;
+
+    @FXML
+    private TableColumn<?, ?> partInventoryLvlCol;
+
+    @FXML
+    private TableColumn<?, ?> partNameCol;
+
+    @FXML
+    private TableColumn<?, ?> partPriceCol;
+
+    @FXML
+    private TableView<?> partsTableView;
+
+    @FXML
+    private TableColumn<?, ?> productIdCol;
+
+    @FXML
+    private TableColumn<?, ?> productInventoryLvlCol;
+
+    @FXML
+    private TableColumn<?, ?> productNameCol;
+
+    @FXML
+    private TableColumn<?, ?> productPriceCol;
+
+    @FXML
+    private TableView<?> productsTableView;
 
     @FXML
     private TextField searchPartTxt;
 
     @FXML
     private TextField searchProductTxt;
-
-    Helpers helpers = new Helpers();
 
 
     /**
@@ -35,7 +64,7 @@ public class MainController implements Initializable {
      */
     @FXML
     void onActionModifyPart(ActionEvent event) throws IOException {
-        helpers.changeScene(event, "modify-part");
+        Helpers.changeScene(event, "modify-part");
     }
 
     /**
@@ -45,7 +74,7 @@ public class MainController implements Initializable {
      */
     @FXML
     void OnActionModifyProduct(ActionEvent event) throws IOException {
-        helpers.changeScene(event, "modify-product");
+        Helpers.changeScene(event, "modify-product");
     }
 
     /**
@@ -55,7 +84,7 @@ public class MainController implements Initializable {
      */
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
-        helpers.changeScene(event, "add-part");
+        Helpers.changeScene(event, "add-part");
     }
 
     /**
@@ -65,7 +94,7 @@ public class MainController implements Initializable {
      */
     @FXML
     void onActionAddProduct(ActionEvent event) throws IOException {
-        helpers.changeScene(event, "add-product");
+        Helpers.changeScene(event, "add-product");
     }
 
     @FXML

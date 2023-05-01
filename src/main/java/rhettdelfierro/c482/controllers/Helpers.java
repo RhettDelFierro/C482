@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/** Helpers methods for the app. */
 public class Helpers {
     /**
      * Helper method to change scenes
@@ -18,9 +19,9 @@ public class Helpers {
      * @param viewName the name of the view to change to (add-part, modify-part, add-product, modify-product)
      * @throws IOException if an error occurs during I/O operations
      */
-    public void changeScene(ActionEvent event, String viewName) throws IOException {
-        int height = 1000;
-        int width = 530;
+    public static void changeScene(ActionEvent event, String viewName) throws IOException {
+        int height = 530;
+        int width = 1000;
         if (Objects.equals(viewName, "main")) {
             height = 530;
             width = 1000;
@@ -34,7 +35,7 @@ public class Helpers {
         }
 
         Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/" + viewName + ".fxml"));
+        Parent scene = FXMLLoader.load(Helpers.class.getResource("/rhettdelfierro/c482/" + viewName + ".fxml"));
         stage.setScene(new Scene(scene, width, height));
         stage.show();
     }

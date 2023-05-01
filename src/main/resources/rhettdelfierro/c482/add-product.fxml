@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="rhettdelfierro.c482.controllers.AddProduct"
-            prefHeight="530" prefWidth="500.0">
+
+<AnchorPane prefHeight="530" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rhettdelfierro.c482.controllers.AddProduct">
     <children>
         <VBox layoutX="-1.0" prefHeight="600.0" prefWidth="1000.0">
             <padding>
@@ -68,12 +75,12 @@
                                         <Label text="Inv" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                         <Label text="Price" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                         <Label text="Max" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                        <TextField disable="true" GridPane.columnIndex="2" />
-                                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                        <TextField maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                        <TextField maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                        <TextField maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                        <TextField GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                        <TextField fx:id="productIDTxt" disable="true" promptText="Auto Gen - Disabled" GridPane.columnIndex="2" />
+                                        <TextField fx:id="productNameTxt" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                        <TextField fx:id="InvLvlTxt" maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                        <TextField fx:id="priceTxt" maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                        <TextField fx:id="maxTxt" maxWidth="75.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                        <TextField fx:id="mixTxt" GridPane.columnIndex="5" GridPane.rowIndex="4" />
                                         <Label text="Min" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                                     </children>
                                 </GridPane>
@@ -99,15 +106,15 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <TextField GridPane.columnIndex="1" />
+                                        <TextField promptText="Search by Part ID or Name" GridPane.columnIndex="1" />
                                     </children>
                                 </GridPane>
-                                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                <TableView fx:id="allPartsTbl" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                                     <columns>
-                                        <TableColumn prefWidth="95.0" text="Part ID" />
-                                        <TableColumn prefWidth="96.0" text="Part Name" />
-                                        <TableColumn prefWidth="118.0" text="Inventory Level" />
-                                        <TableColumn prefWidth="148.0" text="Price/Cost per Unit" />
+                                        <TableColumn fx:id="allPartsPartIdCol" prefWidth="95.0" text="Part ID" />
+                                        <TableColumn fx:id="allPartsPartNameCol" prefWidth="96.0" text="Part Name" />
+                                        <TableColumn fx:id="allPartsInvLvlCol" prefWidth="118.0" text="Inventory Level" />
+                                        <TableColumn fx:id="allPartsPriceCol" prefWidth="148.0" text="Price/Cost per Unit" />
                                     </columns>
                                 </TableView>
                                 <GridPane GridPane.rowIndex="2">
@@ -119,15 +126,15 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Button mnemonicParsing="false" text="Add" GridPane.columnIndex="1" />
+                                        <Button fx:id="onActionAddPart" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" />
                                     </children>
                                 </GridPane>
                                 <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                                     <columns>
-                                        <TableColumn prefWidth="95.0" text="Part ID" />
-                                        <TableColumn prefWidth="96.0" text="Part Name" />
-                                        <TableColumn prefWidth="118.0" text="Inventory Level" />
-                                        <TableColumn prefWidth="148.0" text="Price/Cost per Unit" />
+                                        <TableColumn fx:id="associatedPartsPartIdCol" prefWidth="95.0" text="Part ID" />
+                                        <TableColumn fx:id="associatedPartsPartNameCol" prefWidth="96.0" text="Part Name" />
+                                        <TableColumn fx:id="associatedPartsInvLvlCol" prefWidth="118.0" text="Inventory Level" />
+                                        <TableColumn fx:id="associatedPartsPriceCol" prefWidth="148.0" text="Price/Cost per Unit" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -152,7 +159,7 @@
                                         <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Button maxWidth="185.0" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" />
+                                        <Button maxWidth="185.0" mnemonicParsing="false" onAction="#onActionRemoveAssociatedPart" text="Remove Associated Part" GridPane.columnIndex="2" />
                                     </children>
                                 </GridPane>
                                 <GridPane prefHeight="72.0" prefWidth="932.0">
@@ -168,8 +175,8 @@
                                         <RowConstraints maxHeight="33.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Button maxWidth="60.0" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="5" />
-                                        <Button layoutX="401.0" layoutY="48.0" maxWidth="60.0" mnemonicParsing="false" text="Save" GridPane.columnIndex="4" />
+                                        <Button maxWidth="60.0" mnemonicParsing="false" onAction="#onActionCancel" text="Cancel" GridPane.columnIndex="5" />
+                                        <Button layoutX="401.0" layoutY="48.0" maxWidth="60.0" mnemonicParsing="false" onAction="#onActionSave" text="Save" GridPane.columnIndex="4" />
                                     </children>
                                 </GridPane>
                             </children>
