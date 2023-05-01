@@ -11,6 +11,10 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * FUTURE ENHANCEMENT: Rather than have multiple views and controllers for add/modify part,
+ * perhaps can have one view and the controller can dynamically update the fields.
+ */
 public class AddPart implements Initializable {
 
     @FXML

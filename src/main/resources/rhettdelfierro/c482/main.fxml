@@ -55,7 +55,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="200.0" prefHeight="25.0" prefWidth="182.0" GridPane.columnIndex="1">
+                              <TextField fx:id="searchPartTxt" maxWidth="200.0" prefHeight="25.0" prefWidth="182.0" promptText="Search by Part ID or Name" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -86,17 +86,17 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="3">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionAddPart" text="Add" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Modify" GridPane.columnIndex="4">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionModifyPart" text="Modify" GridPane.columnIndex="4">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Delete" GridPane.columnIndex="5">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionDeletePart" text="Delete" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -131,7 +131,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField maxWidth="200.0" prefHeight="25.0" prefWidth="180.0" GridPane.columnIndex="1">
+                              <TextField fx:id="searchProductTxt" maxWidth="200.0" prefHeight="25.0" prefWidth="180.0" promptText="Search by Product ID or Name" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -162,17 +162,17 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Add" GridPane.columnIndex="3">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionAddProduct" text="Add" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Modify" GridPane.columnIndex="4">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#OnActionModifyProduct" text="Modify" GridPane.columnIndex="4">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button maxWidth="56.0" mnemonicParsing="false" text="Delete" GridPane.columnIndex="5">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionDeleteProduct" text="Delete" GridPane.columnIndex="5">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>
@@ -189,7 +189,7 @@
          </children></HBox>
       <HBox layoutX="830.0" layoutY="454.0" prefHeight="62.0" prefWidth="140.0">
          <children>
-            <Button mnemonicParsing="false" text="Exit">
+            <Button mnemonicParsing="false" onAction="#onActionExitProgram" text="Exit">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
