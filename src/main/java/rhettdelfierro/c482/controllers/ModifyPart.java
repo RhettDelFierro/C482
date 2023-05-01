@@ -44,25 +44,46 @@ public class ModifyPart implements Initializable {
     @FXML
     private RadioButton partOutsourcedRBtn;
 
+    /**
+     * Action event handler for clicking the Cancel Button. This will return to the main screen.
+     *
+     * @param event the action event
+     */
     @FXML
     void onActionCancelUpdatePart(ActionEvent event) {
 
     }
 
+    /**
+     * Action event handler for choosing the Outsource Radio Button
+     *
+     * @param event the action event
+     */
     @FXML
     void onActionOutsourcedRBtn(ActionEvent event) {
 
     }
 
+    /**
+     * Action event handler for choosing the In-House Radio Button
+     *
+     * @param event the action event
+     */
     @FXML
     void onActionPartInHouseRBtn(ActionEvent event) {
 
     }
 
+    /**
+     * Action event handler for clicking the Save Button. This will update and save the part to the inventory
+     * data store and reroute the user to the main screen.
+     * @param event the action event
+     */
     @FXML
     void onActionUpdatePart(ActionEvent event) {
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
