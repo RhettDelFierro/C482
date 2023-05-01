@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import rhettdelfierro.c482.models.Part;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,31 +17,31 @@ public class ModifyProduct implements Initializable {
     private TextField InvLvlTxt;
 
     @FXML
-    private TableColumn<?, ?> allPartsInvLvlCol;
+    private TableColumn<Part, Integer> allPartsInvLvlCol;
 
     @FXML
-    private TableColumn<?, ?> allPartsPartIdCol;
+    private TableColumn<Part, Integer> allPartsPartIdCol;
 
     @FXML
-    private TableColumn<?, ?> allPartsPartNameCol;
+    private TableColumn<Part, String> allPartsPartNameCol;
 
     @FXML
-    private TableColumn<?, ?> allPartsPriceCol;
+    private TableColumn<Part, Double> allPartsPriceCol;
 
     @FXML
-    private TableView<?> allPartsTbl;
+    private TableView<Part> allPartsTbl;
 
     @FXML
-    private TableColumn<?, ?> associatedPartsInvLvlCol;
+    private TableColumn<Part, Integer> associatedPartsInvLvlCol;
 
     @FXML
-    private TableColumn<?, ?> associatedPartsPartIdCol;
+    private TableColumn<Part, Integer> associatedPartsPartIdCol;
 
     @FXML
-    private TableColumn<?, ?> associatedPartsPartNameCol;
+    private TableColumn<Part, String> associatedPartsPartNameCol;
 
     @FXML
-    private TableColumn<?, ?> associatedPartsPriceCol;
+    private TableColumn<Part, Double> associatedPartsPriceCol;
 
     @FXML
     private TextField maxTxt;

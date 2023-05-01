@@ -8,6 +8,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import rhettdelfierro.c482.models.Part;
+import rhettdelfierro.c482.models.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,34 +23,34 @@ public class MainController implements Initializable {
     Parent scene;
 
     @FXML
-    private TableColumn<?, ?> partIdCol;
+    private TableColumn<Part, Integer> partIdCol;
 
     @FXML
-    private TableColumn<?, ?> partInventoryLvlCol;
+    private TableColumn<Part, String> partNameCol;
 
     @FXML
-    private TableColumn<?, ?> partNameCol;
+    private TableColumn<Part, Integer> partInventoryLvlCol;
 
     @FXML
-    private TableColumn<?, ?> partPriceCol;
+    private TableColumn<Part, Double> partPriceCol;
 
     @FXML
-    private TableView<?> partsTableView;
+    private TableView<Part> partsTableView;
 
     @FXML
-    private TableColumn<?, ?> productIdCol;
+    private TableColumn<Product, Integer> productIdCol;
 
     @FXML
-    private TableColumn<?, ?> productInventoryLvlCol;
+    private TableColumn<Product, String> productNameCol;
 
     @FXML
-    private TableColumn<?, ?> productNameCol;
+    private TableColumn<Product, Integer> productInventoryLvlCol;
 
     @FXML
-    private TableColumn<?, ?> productPriceCol;
+    private TableColumn<Product, Double> productPriceCol;
 
     @FXML
-    private TableView<?> productsTableView;
+    private TableView<Product> productsTableView;
 
     @FXML
     private TextField searchPartTxt;
