@@ -5,7 +5,8 @@ import javafx.collections.ObservableList;
 
 /**
  * Inventory data store. This will be used to store all parts and products.
- * FUTURE ENHANCEMENT: Maybe have it so we use overloaded methods for addProduct/addPart as addItem. Same for update.
+ * FUTURE ENHANCEMENT: Perhaps use overloaded methods for addProduct/addPart as addItem. Same for update.
+ *                     Additionally, maybe the getAllParts/Products can take the search parameters and handle list.
  */
 public class Inventory {
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
