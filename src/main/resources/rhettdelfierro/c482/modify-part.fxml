@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="rhettdelfierro.c482.controllers.ModifyPart"
-            prefHeight="530" prefWidth="500.0">
+
+<AnchorPane prefHeight="530" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rhettdelfierro.c482.controllers.ModifyPart">
     <children>
         <VBox layoutY="-7.0" prefHeight="530.0" prefWidth="500.0">
             <padding>
@@ -25,7 +23,7 @@
                         <RowConstraints maxHeight="32.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label prefHeight="17.0" prefWidth="64.0" text="Add Part" GridPane.columnIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="64.0" text="Modify Part" GridPane.columnIndex="1" />
                         <RadioButton mnemonicParsing="false" text="In-House" GridPane.columnIndex="2" />
                         <RadioButton mnemonicParsing="false" text="Outsourced" GridPane.columnIndex="3" />
                     </children>
