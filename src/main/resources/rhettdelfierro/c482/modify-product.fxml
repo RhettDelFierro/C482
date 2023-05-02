@@ -126,10 +126,10 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Button fx:id="onActionAddPart" mnemonicParsing="false" text="Add" GridPane.columnIndex="1" />
+                                        <Button mnemonicParsing="false" onAction="#onActionAddPart" text="Add" GridPane.columnIndex="1" />
                                     </children>
                                 </GridPane>
-                                <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                <TableView fx:id="associatedPartsTbl" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                                     <columns>
                                         <TableColumn fx:id="associatedPartsPartIdCol" prefWidth="95.0" text="Part ID" />
                                         <TableColumn fx:id="associatedPartsPartNameCol" prefWidth="96.0" text="Part Name" />
