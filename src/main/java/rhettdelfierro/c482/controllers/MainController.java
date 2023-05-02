@@ -1,5 +1,6 @@
 package rhettdelfierro.c482.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -63,6 +64,7 @@ public class MainController implements Initializable {
 
     /**
      * Helper method to change scenes with selected part loaded.
+     *
      * @param event Action event
      * @throws IOException
      */
@@ -73,6 +75,7 @@ public class MainController implements Initializable {
 
     /**
      * Helper method to change scenes with selected product loaded.
+     *
      * @param event Action event
      * @throws IOException
      */
@@ -83,6 +86,7 @@ public class MainController implements Initializable {
 
     /**
      * Helper method to change scenes
+     *
      * @param event Action event
      * @throws IOException
      */
@@ -93,6 +97,7 @@ public class MainController implements Initializable {
 
     /**
      * Helper method to change scenes
+     *
      * @param event Action event
      * @throws IOException
      */
@@ -111,10 +116,41 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * Will search for products by name or id and populate table.
+     * @param event Event object.
+     */
+    @FXML
+    void onActionFilterPart(ActionEvent event) {
+        String searchText = searchPartTxt.getText();
+        if (searchText.isEmpty()) {
+            partsTableView.setItems(Inventory.getAllParts());
+        } else {
+            ObservableList<Part> parts = Helpers.searchParts(searchText);
+            partsTableView.setItems(parts);
+        }
+    }
+
+    /**
+     * Will search for products by name or id and populate table.
+     * @param event Event object.
+     */
+    @FXML
+    void onActionFilterProduct(ActionEvent event) {
+        String searchText = searchProductTxt.getText();
+        if (searchText.isEmpty()) {
+            productsTableView.setItems(Inventory.getAllProducts());
+        } else {
+            ObservableList<Product> products = Helpers.searchProducts(searchText);
+            productsTableView.setItems(products);
+        }
+    }
+
     @FXML
     void onActionExitProgram(ActionEvent event) {
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTableView.setItems(Inventory.getAllParts());

@@ -2,15 +2,10 @@ package rhettdelfierro.c482.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import rhettdelfierro.c482.models.InHouse;
 import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Outsourced;
@@ -92,19 +87,19 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
-//        int id = Integer.parseInt(partIdTxt.getText());
+        int id = Integer.parseInt(partIdTxt.getText());
         String name = partNameTxt.getText();
         int stock = Integer.parseInt(invNameTxt.getText());
         double price = Double.parseDouble(priceTxt.getText());
         int min = Integer.parseInt(minTxt.getText());
         int max = Integer.parseInt(maxTxt.getText());
         boolean isInHouse = partInHouseRBtn.isSelected();
-
-        if (!isInHouse) {
+        boolean isOutsourced = partOutsourcedRBtn.isSelected();
+        if (isInHouse) {
             int machineId = Integer.parseInt(machineIdTxt.getText());
             Part part = new InHouse(10, name, price, stock, min, max, machineId);
             Inventory.addPart(part);
-        } else {
+        } else if (isOutsourced) {
             String companyName = machineIdTxt.getText();
             Part part = new Outsourced(10, name, price, stock, min, max, companyName);
             Inventory.addPart(part);
@@ -113,13 +108,6 @@ public class AddPart implements Initializable {
         Helpers.changeScene(event, "main");
     }
 
-    @FXML
-    void goToMainScreen(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/main.fxml"));
-        stage.setScene(new Scene(scene, 1000, 530));
-        stage.show();
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

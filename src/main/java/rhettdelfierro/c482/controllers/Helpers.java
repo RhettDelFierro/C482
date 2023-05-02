@@ -1,11 +1,15 @@
 package rhettdelfierro.c482.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import rhettdelfierro.c482.models.Inventory;
+import rhettdelfierro.c482.models.Part;
+import rhettdelfierro.c482.models.Product;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -38,5 +42,33 @@ public class Helpers {
         Parent scene = FXMLLoader.load(Helpers.class.getResource("/rhettdelfierro/c482/" + viewName + ".fxml"));
         stage.setScene(new Scene(scene, width, height));
         stage.show();
+    }
+
+    public static ObservableList<Part> searchParts(String searchText) {
+        ObservableList<Part> parts = Inventory.lookupPart(searchText);
+        // defining out the error here by using regex to check for int:
+        if (searchText.matches("^-?\\d+$")) {
+            int partId = Integer.parseInt(searchText);
+            Part part = Inventory.lookupPart(partId);
+            // will only show if there's a matching part name or a matching part id. Not both.
+            if (part != null && parts.size() == 0) {
+                parts.add(part);
+            }
+        }
+        return parts;
+    }
+
+    public static ObservableList<Product> searchProducts(String searchText) {
+        ObservableList<Product> products = Inventory.lookupProduct(searchText);
+        // defining out the error here by using regex to check for int:
+        if (searchText.matches("^-?\\d+$")) {
+            int productId = Integer.parseInt(searchText);
+            Product product = Inventory.lookupProduct(productId);
+            // will only show if there's a matching product name or a matching product id. Not both.
+            if (product != null && products.size() == 0) {
+                products.add(product);
+            }
+        }
+        return products;
     }
 }

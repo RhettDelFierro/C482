@@ -55,7 +55,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="searchPartTxt" maxWidth="200.0" prefHeight="25.0" prefWidth="182.0" promptText="Search by Part ID or Name" GridPane.columnIndex="1">
+                              <TextField fx:id="searchPartTxt" maxWidth="200.0" onAction="#onActionFilterPart" prefHeight="25.0" prefWidth="182.0" promptText="Search by Part ID or Name" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
@@ -131,7 +131,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="searchProductTxt" maxWidth="200.0" prefHeight="25.0" prefWidth="180.0" promptText="Search by Product ID or Name" GridPane.columnIndex="1">
+                              <TextField fx:id="searchProductTxt" maxWidth="200.0" onAction="#onActionFilterProduct" prefHeight="25.0" prefWidth="180.0" promptText="Search by Product ID or Name" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets />
                                  </GridPane.margin>
