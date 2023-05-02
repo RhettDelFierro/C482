@@ -106,7 +106,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <TextField promptText="Search by Part ID or Name" GridPane.columnIndex="1" />
+                                        <TextField fx:id="allPartsTxt" onAction="#onActionFilterPart" promptText="Search by Part ID or Name" GridPane.columnIndex="1" />
                                     </children>
                                 </GridPane>
                                 <TableView fx:id="allPartsTbl" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">

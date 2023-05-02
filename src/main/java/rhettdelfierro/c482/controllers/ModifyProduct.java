@@ -1,5 +1,6 @@
 package rhettdelfierro.c482.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Part;
 
@@ -63,6 +65,9 @@ public class ModifyProduct implements Initializable {
     private TextField productNameTxt;
 
     @FXML
+    private TextField allPartsTxt;
+
+    @FXML
     void onActionCancel(ActionEvent event) {
 
     }
@@ -76,8 +81,23 @@ public class ModifyProduct implements Initializable {
     void onActionSave(ActionEvent event) {
 
     }
+    @FXML
+    void onActionFilterPart(ActionEvent event) {
+        String searchText = allPartsTxt.getText();
+        if (searchText.isEmpty()) {
+            allPartsTbl.setItems(Inventory.getAllParts());
+        } else {
+            ObservableList<Part> parts = Helpers.searchParts(searchText);
+            allPartsTbl.setItems(parts);
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allPartsTbl.setItems(Inventory.getAllParts());
+
+        allPartsPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        allPartsPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        allPartsInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        allPartsPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }

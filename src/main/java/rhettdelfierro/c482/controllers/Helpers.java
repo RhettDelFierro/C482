@@ -44,6 +44,12 @@ public class Helpers {
         stage.show();
     }
 
+    /**
+     * Helper method to search for parts by name or id.
+     *
+     * @param searchText the text to search for
+     * @return the list of parts
+     */
     public static ObservableList<Part> searchParts(String searchText) {
         ObservableList<Part> parts = Inventory.lookupPart(searchText);
         // defining out the error here by using regex to check for int:
@@ -58,6 +64,12 @@ public class Helpers {
         return parts;
     }
 
+    /**
+     * Helper method to search for products by name or id.
+     *
+     * @param searchText the text to search for
+     * @return the list of products
+     */
     public static ObservableList<Product> searchProducts(String searchText) {
         ObservableList<Product> products = Inventory.lookupProduct(searchText);
         // defining out the error here by using regex to check for int:

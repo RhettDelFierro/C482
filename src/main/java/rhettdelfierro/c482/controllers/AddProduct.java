@@ -1,16 +1,15 @@
 package rhettdelfierro.c482.controllers;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.PropertyValueFactory;
+import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Part;
 
 import java.io.IOException;
@@ -67,8 +66,11 @@ public class AddProduct implements Initializable {
     private TextField productNameTxt;
 
     @FXML
-    void onActionCancel(ActionEvent event) {
+    private TextField allPartsTxt;
 
+    @FXML
+    void onActionCancel(ActionEvent event) throws IOException {
+        Helpers.changeScene(event, "main");
     }
 
     @FXML
@@ -77,18 +79,28 @@ public class AddProduct implements Initializable {
     }
 
     @FXML
-    void onActionSave(ActionEvent event) {
+    void onActionSave(ActionEvent event) throws IOException {
+        Helpers.changeScene(event, "main");
+    }
 
-    }
     @FXML
-    void goToMainScreen(ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button)event.getSource()).getScene().getWindow();
-        Parent scene = FXMLLoader.load(getClass().getResource("/rhettdelfierro/c482/main.fxml"));
-        stage.setScene(new Scene(scene, 1000, 530));
-        stage.show();
+    void onActionFilterPart(ActionEvent event) {
+        String searchText = allPartsTxt.getText();
+        if (searchText.isEmpty()) {
+            allPartsTbl.setItems(Inventory.getAllParts());
+        } else {
+            ObservableList<Part> parts = Helpers.searchParts(searchText);
+            allPartsTbl.setItems(parts);
+        }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        allPartsTbl.setItems(Inventory.getAllParts());
 
+        allPartsPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        allPartsPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        allPartsInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        allPartsPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }
