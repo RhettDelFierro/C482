@@ -167,7 +167,7 @@
                                     <Insets left="15.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#OnActionModifyProduct" text="Modify" GridPane.columnIndex="4">
+                              <Button maxWidth="56.0" mnemonicParsing="false" onAction="#onActionModifyProduct" text="Modify" GridPane.columnIndex="4">
                                  <GridPane.margin>
                                     <Insets left="15.0" />
                                  </GridPane.margin>

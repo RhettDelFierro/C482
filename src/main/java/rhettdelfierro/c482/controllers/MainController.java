@@ -3,12 +3,11 @@ package rhettdelfierro.c482.controllers;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import rhettdelfierro.c482.models.Inventory;
@@ -61,29 +60,6 @@ public class MainController implements Initializable {
 
     @FXML
     private TextField searchProductTxt;
-
-
-    /**
-     * Helper method to change scenes with selected part loaded.
-     *
-     * @param event Action event
-     * @throws IOException
-     */
-    @FXML
-    void onActionModifyPart(ActionEvent event) throws IOException {
-        Helpers.changeScene(event, "modify-part");
-    }
-
-    /**
-     * Helper method to change scenes with selected product loaded.
-     *
-     * @param event Action event
-     * @throws IOException
-     */
-    @FXML
-    void OnActionModifyProduct(ActionEvent event) throws IOException {
-        Helpers.changeScene(event, "modify-product");
-    }
 
     /**
      * Helper method to change scenes
@@ -163,6 +139,46 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * Helper method to change scenes with selected Part loaded.
+     *
+     * @param event Action event
+     * @throws IOException
+     */
+    @FXML
+    public void onActionModifyPart(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Helpers.class.getResource("/rhettdelfierro/c482/modify-part.fxml"));
+        loader.load();
+        ModifyPart controller = loader.getController();
+        controller.sendPart(partsTableView.getSelectionModel().getSelectedItem());
+
+        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
+        stage.setScene(new Scene(scene, 500, 530));
+        stage.showAndWait();
+    }
+
+    /**
+     * Helper method to change scenes with selected Product loaded.
+     *
+     * @param event Action event
+     * @throws IOException
+     */
+    @FXML
+    public void onActionModifyProduct(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Helpers.class.getResource("/rhettdelfierro/c482/modify-product.fxml"));
+        loader.load();
+        ModifyProduct controller = loader.getController();
+        controller.sendProduct(productsTableView.getSelectionModel().getSelectedItem());
+
+        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        Parent scene = loader.getRoot();
+        stage.setScene(new Scene(scene, 500, 530));
+        stage.showAndWait();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTableView.setItems(Inventory.getAllParts());
@@ -171,5 +187,7 @@ public class MainController implements Initializable {
         partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         partInventoryLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        partsTableView.getSelectionModel().select(Inventory.lookupPart(5));
     }
 }

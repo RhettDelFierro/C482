@@ -24,9 +24,12 @@ public class MainApplication extends Application {
         InHouse part1 = new InHouse(1, "Part 1", 1.99, 1, 1, 1, 1);
         InHouse part2 = new InHouse(2, "Part 2", 2.99, 2, 2, 2, 2);
         InHouse part3 = new InHouse(3, "Part 3", 3.99, 3, 3, 3, 3);
+        InHouse part5 = new InHouse(5, "Part 3", 5.99, 5, 1, 4, 5);
         Inventory.addPart(part1);
         Inventory.addPart(part2);
+        Inventory.addPart(part5);
         Inventory.addPart(part3);
+
 
         launch();
     }

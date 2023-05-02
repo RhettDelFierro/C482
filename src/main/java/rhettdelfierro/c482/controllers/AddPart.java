@@ -91,7 +91,6 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
-        int id = Integer.parseInt(partIdTxt.getText());
         if (!Helpers.checkValidInt(invTxt.getText())) {
             Helpers.showErrorDialog("Inventory must be a valid integer.");
             return;
@@ -115,6 +114,7 @@ public class AddPart implements Initializable {
             return;
         }
 
+        int id = Integer.parseInt(partIdTxt.getText());
         String name = partNameTxt.getText();
         int stock = Integer.parseInt(invTxt.getText());
         double price = Double.parseDouble(priceTxt.getText());

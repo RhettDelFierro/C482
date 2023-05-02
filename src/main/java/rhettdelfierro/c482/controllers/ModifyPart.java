@@ -7,6 +7,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import rhettdelfierro.c482.models.InHouse;
+import rhettdelfierro.c482.models.Outsourced;
+import rhettdelfierro.c482.models.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -108,6 +111,22 @@ public class ModifyPart implements Initializable {
         boolean isInHouse = partInHouseRBtn.isSelected();
         boolean isOutsourced = partOutsourcedRBtn.isSelected();
         Helpers.changeScene(event, "main");
+    }
+
+    public void sendPart(Part part) {
+        partIdTxt.setText(String.valueOf(part.getId()));
+        partNameTxt.setText(part.getName());
+        invTxt.setText(String.valueOf(part.getStock()));
+        priceTxt.setText(String.valueOf(part.getPrice()));
+        minTxt.setText(String.valueOf(part.getMin()));
+        maxTxt.setText(String.valueOf(part.getMax()));
+        if (part instanceof InHouse) {
+            machineIdTxt.setText(String.valueOf(((InHouse) part).getMachineId()));
+            partInHouseRBtn.setSelected(true);
+        } else {
+            machineIdTxt.setText(((Outsourced) part).getCompanyName());
+            partOutsourcedRBtn.setSelected(true);
+        }
     }
 
     /**

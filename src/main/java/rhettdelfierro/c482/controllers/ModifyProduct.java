@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Part;
+import rhettdelfierro.c482.models.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -118,6 +119,15 @@ public class ModifyProduct implements Initializable {
                 allPartsTbl.setItems(results);
             }
         }
+    }
+
+    void sendProduct(Product product) {
+        productIDTxt.setText(String.valueOf(product.getId()));
+        productNameTxt.setText(product.getName());
+        InvLvlTxt.setText(String.valueOf(product.getStock()));
+        priceTxt.setText(String.valueOf(product.getPrice()));
+        minTxt.setText(String.valueOf(product.getMin()));
+        maxTxt.setText(String.valueOf(product.getMax()));
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

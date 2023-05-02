@@ -106,4 +106,20 @@ public class Helpers {
     public static boolean checkValidDouble(String str){
         return str.matches("^[-+]?\\d*\\.?\\d+$");
     }
+
+    public static void updatePartById(int id, Part newPart) {
+        // get index then use Inventory.updatePart(index, newPart)
+    }
+
+    public static void updateProductById(int id, Product newProduct) {
+        // get index then use Inventory.updateProduct(index, part)
+    }
+
+    public static void deletePartById(int id) {
+        // get index then use Inventory.deletePart(index)
+    }
+
+    public static void deleteProductById(int id) {
+        // get index then use Inventory.deleteProduct(index)
+    }
 }
