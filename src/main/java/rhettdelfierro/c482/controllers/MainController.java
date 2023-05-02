@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -103,7 +104,21 @@ public class MainController implements Initializable {
 
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
-
+        Product productForDeletion = productsTableView.getSelectionModel().getSelectedItem();
+        if (productForDeletion == null) {
+            Helpers.showErrorDialog("There is no product selected for deletion.");
+        } else if (productForDeletion.getAllAssociatedParts().size() == 0) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm deletion.");
+            alert.setContentText("Are you sure you want to delete the product: " + productForDeletion.getName() + "?");
+            alert.showAndWait();
+            if (alert.getResult() != ButtonType.OK) {
+                return;
+            }
+            Inventory.deleteProduct(productsTableView.getSelectionModel().getSelectedItem());
+        } else {
+            Helpers.showErrorDialog("You cannot delete a product that has associated parts.");
+        }
     }
 
     /**
@@ -149,7 +164,8 @@ public class MainController implements Initializable {
 
     @FXML
     void onActionExitProgram(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     /**
