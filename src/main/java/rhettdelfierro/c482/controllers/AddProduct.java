@@ -93,7 +93,13 @@ public class AddProduct implements Initializable {
 
     @FXML
     void onActionRemoveAssociatedPart(ActionEvent event) {
-
+        Part selectedPart = associatedPartsTbl.getSelectionModel().getSelectedItem();
+        if (selectedPart == null) {
+            Helpers.showErrorDialog("Please select a part to remove.");
+            return;
+        }
+        defaultProduct.deleteAssociatedPart(selectedPart);
+        associatedPartsTbl.setItems(defaultProduct.getAllAssociatedParts());
     }
 
     @FXML
@@ -125,6 +131,12 @@ public class AddProduct implements Initializable {
             return;
         }
 
+        defaultProduct.setName(productNameTxt.getText());
+        defaultProduct.setStock(Integer.parseInt(InvLvlTxt.getText()));
+        defaultProduct.setPrice(Double.parseDouble(priceTxt.getText()));
+        defaultProduct.setMin(Integer.parseInt(minTxt.getText()));
+        defaultProduct.setMax(Integer.parseInt(maxTxt.getText()));
+        Inventory.addProduct(defaultProduct);
         Helpers.changeScene(event, "main");
     }
 

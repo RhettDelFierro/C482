@@ -119,6 +119,17 @@ public class Helpers {
         return -1;
     }
 
+    public static int findIndexForProduct(int id) {
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+
+        for (int i = 0; i < allProducts.size(); i++) {
+            if (allProducts.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static void updatePartById(int id, Part newPart) {
         // get index then use Inventory.updatePart(index, newPart)
     }
