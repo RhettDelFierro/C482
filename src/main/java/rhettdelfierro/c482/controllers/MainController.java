@@ -188,7 +188,7 @@ public class MainController implements Initializable {
 
         stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         Parent scene = loader.getRoot();
-        stage.setScene(new Scene(scene, 500, 530));
+        stage.setScene(new Scene(scene, 1000, 600));
         stage.showAndWait();
     }
 
@@ -200,6 +200,12 @@ public class MainController implements Initializable {
         partNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         partInventoryLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        productsTableView.setItems(Inventory.getAllProducts());
+        productIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        productNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        productInventoryLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        productPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
 //        partsTableView.getSelectionModel().select(Inventory.lookupPart(5));
     }

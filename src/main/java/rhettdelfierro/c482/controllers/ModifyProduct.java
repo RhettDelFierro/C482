@@ -162,6 +162,7 @@ public class ModifyProduct implements Initializable {
         associatedPartsInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartsPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allPartsTbl.setItems(Inventory.getAllParts());
