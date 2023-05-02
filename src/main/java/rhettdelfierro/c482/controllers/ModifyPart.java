@@ -104,8 +104,6 @@ public class ModifyPart implements Initializable {
             return;
         }
 
-
-
         int id = Integer.parseInt(partIdTxt.getText());
         String name = partNameTxt.getText();
         int stock = Integer.parseInt(invTxt.getText());

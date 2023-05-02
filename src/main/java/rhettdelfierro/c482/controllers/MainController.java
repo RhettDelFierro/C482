@@ -85,6 +85,19 @@ public class MainController implements Initializable {
 
     @FXML
     void onActionDeletePart(ActionEvent event) {
+        Part partForDeletion = partsTableView.getSelectionModel().getSelectedItem();
+        if (partForDeletion == null) {
+            Helpers.showErrorDialog("There is no part selected for deletion.");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirm deletion.");
+            alert.setContentText("Are you sure you want to delete the part: " + partForDeletion.getName() + "?");
+            alert.showAndWait();
+            if (alert.getResult() != ButtonType.OK) {
+                return;
+            }
+            Inventory.deletePart(partsTableView.getSelectionModel().getSelectedItem());
+        }
 
     }
 
@@ -188,6 +201,6 @@ public class MainController implements Initializable {
         partInventoryLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         partPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        partsTableView.getSelectionModel().select(Inventory.lookupPart(5));
+//        partsTableView.getSelectionModel().select(Inventory.lookupPart(5));
     }
 }
