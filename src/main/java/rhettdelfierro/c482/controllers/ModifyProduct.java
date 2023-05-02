@@ -93,6 +93,10 @@ public class ModifyProduct implements Initializable {
             Helpers.showErrorDialog("Min must be less than Max.");
             return;
         }
+        if (Integer.parseInt(minTxt.getText()) < 0 || Integer.parseInt(maxTxt.getText()) < 0) {
+            Helpers.showErrorDialog("Min and Max must be greater than 0.");
+            return;
+        }
         if ((Integer.parseInt(InvLvlTxt.getText()) < Integer.parseInt(minTxt.getText())) ||
                 (Integer.parseInt(InvLvlTxt.getText())) > Integer.parseInt(maxTxt.getText())
         ) {

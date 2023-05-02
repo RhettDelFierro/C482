@@ -85,6 +85,10 @@ public class AddProduct implements Initializable {
             Helpers.showErrorDialog("Min and Max must be a valid integer.");
             return;
         }
+        if (Integer.parseInt(minTxt.getText()) < 0 || Integer.parseInt(maxTxt.getText()) < 0) {
+            Helpers.showErrorDialog("Min and Max must be greater than 0.");
+            return;
+        }
         if (Integer.parseInt(minTxt.getText()) > Integer.parseInt(maxTxt.getText())) {
             Helpers.showErrorDialog("Min must be less than Max.");
             return;

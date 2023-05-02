@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import rhettdelfierro.c482.models.InHouse;
 import rhettdelfierro.c482.models.Inventory;
+import rhettdelfierro.c482.models.Outsourced;
 
 import java.io.IOException;
 
@@ -21,14 +22,18 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        InHouse part1 = new InHouse(1, "Part 1", 1.99, 1, 1, 1, 1);
-        InHouse part2 = new InHouse(2, "Part 2", 2.99, 2, 2, 2, 2);
+        InHouse part1 = new InHouse(1, "Part 1", 1.99, 1, 1, 2, 1);
+        InHouse part2 = new InHouse(2, "Part 2", 2.99, 10, 1, 2, 2);
         InHouse part3 = new InHouse(3, "Part 3", 3.99, 3, 3, 3, 3);
-        InHouse part5 = new InHouse(5, "Part 3", 5.99, 5, 1, 4, 5);
+        InHouse part5 = new InHouse(5, "Part 5", 5.99, 5, 1, 4, 5);
+        Outsourced part4 = new Outsourced(5, "Extra Part 5", 5.99, 5, 1, 4, "Company 5 store");
+        Outsourced part10 = new Outsourced(5, "Extra Part 4", 4.99, 5, 1, 3, "Company 4 store");
         Inventory.addPart(part1);
         Inventory.addPart(part2);
         Inventory.addPart(part5);
         Inventory.addPart(part3);
+        Inventory.addPart(part4);
+        Inventory.addPart(part10);
 
 
         launch();
