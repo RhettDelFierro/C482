@@ -8,6 +8,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import rhettdelfierro.c482.models.InHouse;
+import rhettdelfierro.c482.models.Inventory;
 import rhettdelfierro.c482.models.Outsourced;
 import rhettdelfierro.c482.models.Part;
 
@@ -107,15 +108,34 @@ public class ModifyPart implements Initializable {
         int id = Integer.parseInt(partIdTxt.getText());
         String name = partNameTxt.getText();
         int stock = Integer.parseInt(invTxt.getText());
-
         double price = Double.parseDouble(priceTxt.getText());
         int min = Integer.parseInt(minTxt.getText());
         int max = Integer.parseInt(maxTxt.getText());
         boolean isInHouse = partInHouseRBtn.isSelected();
         boolean isOutsourced = partOutsourcedRBtn.isSelected();
+
+        if (isInHouse) {
+            if (!Helpers.checkValidInt(machineIdTxt.getText())) {
+                Helpers.showErrorDialog("Machine ID must be a number.");
+            } else {
+                int machineId = Integer.parseInt(machineIdTxt.getText());
+                Part part = new InHouse(id, name, price, stock, min, max, machineId);
+                Inventory.addPart(part);
+            }
+
+        } else if (isOutsourced) {
+            String companyName = machineIdTxt.getText();
+            Part part = new Outsourced(id, name, price, stock, min, max, companyName);
+            Inventory.addPart(part);
+        }
         Helpers.changeScene(event, "main");
     }
 
+    /**
+     * This method is used to load the part data as chosen from the main screen's table view.
+     *
+     * @param part The part to be loaded into the modify product screen.
+     */
     public void sendPart(Part part) {
         partIdTxt.setText(String.valueOf(part.getId()));
         partNameTxt.setText(part.getName());

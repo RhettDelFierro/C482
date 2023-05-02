@@ -125,6 +125,10 @@ public class ModifyProduct implements Initializable {
         }
     }
 
+    /**
+     * This method is used to load the product data as chosen from the main screen's table view.
+     * @param product The product to be loaded into the modify product screen.
+     */
     void sendProduct(Product product) {
         productIDTxt.setText(String.valueOf(product.getId()));
         productNameTxt.setText(product.getName());
