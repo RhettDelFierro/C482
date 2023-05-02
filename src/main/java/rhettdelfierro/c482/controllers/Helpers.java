@@ -108,6 +108,17 @@ public class Helpers {
         return str.matches("^[-+]?\\d*\\.?\\d+$");
     }
 
+    public static int findIndexForPart(int id) {
+        ObservableList<Part> allParts = Inventory.getAllParts();
+
+        for (int i = 0; i < allParts.size(); i++) {
+            if (allParts.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static void updatePartById(int id, Part newPart) {
         // get index then use Inventory.updatePart(index, newPart)
     }

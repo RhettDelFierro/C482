@@ -113,20 +113,20 @@ public class ModifyPart implements Initializable {
         int max = Integer.parseInt(maxTxt.getText());
         boolean isInHouse = partInHouseRBtn.isSelected();
         boolean isOutsourced = partOutsourcedRBtn.isSelected();
-
+        int index = Helpers.findIndexForPart(id);
         if (isInHouse) {
             if (!Helpers.checkValidInt(machineIdTxt.getText())) {
                 Helpers.showErrorDialog("Machine ID must be a number.");
             } else {
                 int machineId = Integer.parseInt(machineIdTxt.getText());
-                Part part = new InHouse(id, name, price, stock, min, max, machineId);
-                Inventory.addPart(part);
+                Part newPart = new InHouse(id, name, price, stock, min, max, machineId);
+                Inventory.updatePart(index, newPart);
             }
 
         } else if (isOutsourced) {
             String companyName = machineIdTxt.getText();
-            Part part = new Outsourced(id, name, price, stock, min, max, companyName);
-            Inventory.addPart(part);
+            Part newPart = new Outsourced(id, name, price, stock, min, max, companyName);
+            Inventory.updatePart(index, newPart);
         }
         Helpers.changeScene(event, "main");
     }
