@@ -84,6 +84,11 @@ public class MainController implements Initializable {
         Helpers.changeScene(event, "add-product");
     }
 
+    /**
+     * Deletes parts.
+     *
+     * @param event Action event
+     */
     @FXML
     void onActionDeletePart(ActionEvent event) {
         Part partForDeletion = partsTableView.getSelectionModel().getSelectedItem();
@@ -102,6 +107,10 @@ public class MainController implements Initializable {
 
     }
 
+    /**
+     * Deletes product if there are no associated parts.
+     * @param event Event object.
+     */
     @FXML
     void onActionDeleteProduct(ActionEvent event) {
         Product productForDeletion = productsTableView.getSelectionModel().getSelectedItem();
@@ -162,6 +171,11 @@ public class MainController implements Initializable {
         }
     }
 
+    /**
+     * Exits program.
+     *
+     * @param event Action event
+     */
     @FXML
     void onActionExitProgram(ActionEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

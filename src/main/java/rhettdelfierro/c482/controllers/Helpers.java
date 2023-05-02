@@ -23,7 +23,7 @@ public class Helpers {
      *
      * @param event the action event
      * @param viewName the name of the view to change to (add-part, modify-part, add-product, modify-product)
-     * @throws IOException if an error occurs during I/O operations
+     * @throws IOException if getResource() fails to find the .fxml file
      */
     public static void changeScene(ActionEvent event, String viewName) throws IOException {
         int height = 530;
@@ -86,10 +86,19 @@ public class Helpers {
         return products;
     }
 
+    /**
+     * Helper to parse strings for valid integers. Often used before Integer.parseInt() and other casting.
+     * @param str the string to check.
+     * @return boolean whether the string is a valid integer.
+     */
     public static boolean checkValidInt(String str){
         return str.matches("^-?\\d+$");
     }
 
+    /**
+     * Helper to show error dialogs.
+     * @param message the error message to display.
+     */
     public static void showErrorDialog(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Program error.");
@@ -97,6 +106,10 @@ public class Helpers {
         alert.showAndWait();
     }
 
+    /**
+     * Helper to show warning dialogs. This is really not used in the app as most warnings are errors.
+     * @param message the warning message to display.
+     */
     public static void showWarningDialog(String message){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Continue?");
@@ -104,10 +117,21 @@ public class Helpers {
         alert.showAndWait();
     }
 
+    /**
+     * Helper to parse strings for valid doubles. Often used before to check if prices were correctly entered.
+     * @param str string to parse
+     * @return boolean whether the string is a valid double.
+     */
     public static boolean checkValidDouble(String str){
         return str.matches("^[-+]?\\d*\\.?\\d+$");
     }
 
+    /**
+     * Helper to find the given part by id and return its index from the store.
+     * @param id the id of the part to find.
+     * @return index of the part in the store.
+     * FUTURE ENHANCEMENT: Could have overloaded with products.
+     */
     public static int findIndexForPart(int id) {
         ObservableList<Part> allParts = Inventory.getAllParts();
 
@@ -119,6 +143,12 @@ public class Helpers {
         return -1;
     }
 
+    /**
+     * Helper to find the given product by id and return its index from the store.
+     * @param id the id of the product to find.
+     * @return index of the product in the store.
+     * FUTURE ENHANCEMENT: Could have overloaded with parts.
+     */
     public static int findIndexForProduct(int id) {
         ObservableList<Product> allProducts = Inventory.getAllProducts();
 
@@ -128,22 +158,6 @@ public class Helpers {
             }
         }
         return -1;
-    }
-
-    public static void updatePartById(int id, Part newPart) {
-        // get index then use Inventory.updatePart(index, newPart)
-    }
-
-    public static void updateProductById(int id, Product newProduct) {
-        // get index then use Inventory.updateProduct(index, part)
-    }
-
-    public static void deletePartById(int id) {
-        // get index then use Inventory.deletePart(index)
-    }
-
-    public static void deleteProductById(int id) {
-        // get index then use Inventory.deleteProduct(index)
     }
 
     /**

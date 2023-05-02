@@ -71,6 +71,10 @@ public class ModifyProduct implements Initializable {
     @FXML
     private Product currentProduct;
 
+    /**
+     * Adds the part to product.
+     * @param event action event
+     */
     @FXML
     void onActionAddPart(ActionEvent event) {
         Part selectedPart = allPartsTbl.getSelectionModel().getSelectedItem();
@@ -82,11 +86,20 @@ public class ModifyProduct implements Initializable {
         associatedPartsTbl.setItems(currentProduct.getAllAssociatedParts());
     }
 
+    /**
+     * Switches back to the main screen from the modify product page.
+     * @param event action event.
+     * @throws IOException if the main screen is not found.
+     */
     @FXML
     void onActionCancel(ActionEvent event) throws IOException {
         Helpers.changeScene(event, "main");
     }
 
+    /**
+     * Removes associated part fom product.
+     * @param event action event
+     */
     @FXML
     void onActionRemoveAssociatedPart(ActionEvent event) {
         Part selectedPart = associatedPartsTbl.getSelectionModel().getSelectedItem();
@@ -98,6 +111,11 @@ public class ModifyProduct implements Initializable {
         associatedPartsTbl.setItems(currentProduct.getAllAssociatedParts());
     }
 
+    /**
+     * Saves the product to the inventory.
+     * @param event action event
+     * @throws IOException if the main screen is not found when routing.
+     */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
         if (!Helpers.checkValidInt(InvLvlTxt.getText())) {
@@ -137,6 +155,12 @@ public class ModifyProduct implements Initializable {
         Inventory.updateProduct(index, newProduct);
         Helpers.changeScene(event, "main");
     }
+
+    /**
+     * Filters/searches for the part in all parts table.
+     *
+     * @param event action event
+     */
     @FXML
     void onActionFilterPart(ActionEvent event) {
         String searchText = allPartsTxt.getText();

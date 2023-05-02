@@ -75,11 +75,20 @@ public class AddProduct implements Initializable {
     @FXML
     private Product defaultProduct = new Product(0, "", 0.0, 0, 0, 0);
 
+    /**
+     * Closes Product page and returns to main screen.
+     * @param event action event
+     * @throws IOException if the scene fails to load
+     */
     @FXML
     void onActionCancel(ActionEvent event) throws IOException {
         Helpers.changeScene(event, "main");
     }
 
+    /**
+     * Adds an associated part to the Product.
+     * @param event action event
+     */
     @FXML
     void onActionAddPart(ActionEvent event) {
         Part selectedPart = allPartsTbl.getSelectionModel().getSelectedItem();
@@ -91,6 +100,10 @@ public class AddProduct implements Initializable {
         associatedPartsTbl.setItems(defaultProduct.getAllAssociatedParts());
     }
 
+    /**
+     * Removes the selected associated part from the product.
+     * @param event action event
+     */
     @FXML
     void onActionRemoveAssociatedPart(ActionEvent event) {
         Part selectedPart = associatedPartsTbl.getSelectionModel().getSelectedItem();
@@ -102,6 +115,11 @@ public class AddProduct implements Initializable {
         associatedPartsTbl.setItems(defaultProduct.getAllAssociatedParts());
     }
 
+    /**
+     * Saves the product to the inventory store,
+     * @param event action event
+     * @throws IOException if the scene fails to load when going back to the main screen.
+     */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
         if (!Helpers.checkValidInt(InvLvlTxt.getText())) {
@@ -140,6 +158,10 @@ public class AddProduct implements Initializable {
         Helpers.changeScene(event, "main");
     }
 
+    /**
+     * Filters the parts table by the search text.
+     * @param event action event
+     */
     @FXML
     void onActionFilterPart(ActionEvent event) {
         String searchText = allPartsTxt.getText();
