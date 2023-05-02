@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import rhettdelfierro.c482.models.InHouse;
+import rhettdelfierro.c482.models.Inventory;
+import rhettdelfierro.c482.models.Outsourced;
+import rhettdelfierro.c482.models.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -33,13 +36,16 @@ public class AddPart implements Initializable {
     private TextField machineIdTxt;
 
     @FXML
-    private TextField maxPriceTxt;
+    private TextField priceTxt;
 
     @FXML
-    private TextField minPriceTxt;
+    private TextField minTxt;
 
     @FXML
-    private VBox partIdTxt;
+    private TextField maxTxt;
+
+    @FXML
+    private TextField partIdTxt;
 
     @FXML
     private RadioButton partInHouseRBtn;
@@ -56,6 +62,7 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionOutsourcedRBtn(ActionEvent event) {
+        machineIDLabel.setText("Company Name");
         System.out.println("Outsourced Radio Button Clicked");
     }
 
@@ -65,6 +72,7 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionPartInHouseRBtn(ActionEvent event) {
+        machineIDLabel.setText("Machine ID");
         System.out.println("In-House Radio Button Clicked");
     }
 
@@ -84,7 +92,24 @@ public class AddPart implements Initializable {
      */
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
-        System.out.println("Save Button Clicked");
+//        int id = Integer.parseInt(partIdTxt.getText());
+        String name = partNameTxt.getText();
+        int stock = Integer.parseInt(invNameTxt.getText());
+        double price = Double.parseDouble(priceTxt.getText());
+        int min = Integer.parseInt(minTxt.getText());
+        int max = Integer.parseInt(maxTxt.getText());
+        boolean isInHouse = partInHouseRBtn.isSelected();
+
+        if (!isInHouse) {
+            int machineId = Integer.parseInt(machineIdTxt.getText());
+            Part part = new InHouse(10, name, price, stock, min, max, machineId);
+            Inventory.addPart(part);
+        } else {
+            String companyName = machineIdTxt.getText();
+            Part part = new Outsourced(10, name, price, stock, min, max, companyName);
+            Inventory.addPart(part);
+        }
+
         Helpers.changeScene(event, "main");
     }
 

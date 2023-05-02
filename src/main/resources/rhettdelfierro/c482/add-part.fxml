@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="530" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rhettdelfierro.c482.controllers.AddPart">
     <children>
-        <VBox fx:id="partIdTxt" layoutY="-7.0" prefHeight="530.0" prefWidth="500.0">
+        <VBox layoutY="-7.0" prefHeight="530.0" prefWidth="500.0">
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
@@ -65,13 +65,13 @@
                         <Label text="Price/Cost" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label text="Max" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label fx:id="machineIDLabel" text="Machine ID" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField disable="true" text="Auto Gen. - Disabled" GridPane.columnIndex="2" />
+                        <TextField fx:id="partIdTxt" disable="true" text="Auto Gen. - Disabled" GridPane.columnIndex="2" />
                         <TextField fx:id="partNameTxt" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <TextField fx:id="invNameTxt" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <TextField fx:id="maxPriceTxt" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <TextField GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <TextField fx:id="priceTxt" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="maxTxt" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                         <TextField fx:id="machineIdTxt" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <TextField fx:id="minPriceTxt" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                        <TextField fx:id="minTxt" GridPane.columnIndex="5" GridPane.rowIndex="4" />
                         <Label text="Min" GridPane.columnIndex="4" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>

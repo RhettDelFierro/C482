@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,13 +27,16 @@ public class ModifyPart implements Initializable {
     private TextField machineIdTxt;
 
     @FXML
-    private TextField maxPriceTxt;
+    private TextField maxTxt;
 
     @FXML
-    private TextField minPriceTxt;
+    private TextField priceTxt;
 
     @FXML
-    private VBox partIdTxt;
+    private TextField minTxt;
+
+    @FXML
+    private TextField partIdTxt;
 
     @FXML
     private RadioButton partInHouseRBtn;
@@ -52,7 +54,7 @@ public class ModifyPart implements Initializable {
      */
     @FXML
     void onActionOutsourcedRBtn(ActionEvent event) {
-
+        machineIDLabel.setText("Company Name");
     }
 
     /**
@@ -62,7 +64,7 @@ public class ModifyPart implements Initializable {
      */
     @FXML
     void onActionPartInHouseRBtn(ActionEvent event) {
-
+        machineIDLabel.setText("Machine ID");
     }
 
     /**

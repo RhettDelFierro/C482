@@ -7,6 +7,6 @@ module rhettdelfierro.c482 {
 
     exports rhettdelfierro.c482;
     exports rhettdelfierro.c482.controllers;
-    exports rhettdelfierro.c482.models;
+    exports rhettdelfierro.c482.models; // needed to add this.
     opens rhettdelfierro.c482.controllers to javafx.fxml;
 }
