@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class AddPart implements Initializable {
 
     @FXML
-    private TextField invNameTxt;
+    private TextField invTxt;
 
     @FXML
     private Label machineIDLabel;
@@ -53,6 +53,7 @@ public class AddPart implements Initializable {
 
     /**
      * Action event handler for choosing the Outsource Radio Button
+     *
      * @param event the action event
      */
     @FXML
@@ -63,6 +64,7 @@ public class AddPart implements Initializable {
 
     /**
      * Action event handler for choosing the In-House Radio Button
+     *
      * @param event the action event
      */
     @FXML
@@ -73,32 +75,63 @@ public class AddPart implements Initializable {
 
     /**
      * Action event handler for clicking the Cancel Button. This will return to the main screen.
+     *
      * @param event the action event
      */
     @FXML
-    void onActionCancelAddPart(ActionEvent event) throws IOException{
+    void onActionCancelAddPart(ActionEvent event) throws IOException {
         Helpers.changeScene(event, "main");
     }
 
     /**
      * Action event handler for clicking the Save Button. This will save the part to the inventory data store and
      * reroute the user to the main screen.
+     *
      * @param event the action event
      */
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
         int id = Integer.parseInt(partIdTxt.getText());
+        if (!Helpers.checkValidInt(invTxt.getText())) {
+            Helpers.showErrorDialog("Inventory must be a valid integer.");
+            return;
+        }
+        if (!(Helpers.checkValidInt(minTxt.getText()) && Helpers.checkValidInt(maxTxt.getText()))) {
+            Helpers.showErrorDialog("Min and Max must be a valid integer.");
+            return;
+        }
+        if (Integer.parseInt(minTxt.getText()) > Integer.parseInt(maxTxt.getText())) {
+            Helpers.showErrorDialog("Min must be less than Max.");
+            return;
+        }
+        if ((Integer.parseInt(invTxt.getText()) < Integer.parseInt(minTxt.getText())) ||
+                (Integer.parseInt(invTxt.getText())) > Integer.parseInt(maxTxt.getText())
+        ) {
+            Helpers.showErrorDialog("Inventory must be between Min and Max");
+            return;
+        }
+        if (!Helpers.checkValidDouble(priceTxt.getText())) {
+            Helpers.showErrorDialog("Price must be a valid amount.");
+            return;
+        }
+
         String name = partNameTxt.getText();
-        int stock = Integer.parseInt(invNameTxt.getText());
+        int stock = Integer.parseInt(invTxt.getText());
         double price = Double.parseDouble(priceTxt.getText());
         int min = Integer.parseInt(minTxt.getText());
         int max = Integer.parseInt(maxTxt.getText());
         boolean isInHouse = partInHouseRBtn.isSelected();
         boolean isOutsourced = partOutsourcedRBtn.isSelected();
+
         if (isInHouse) {
-            int machineId = Integer.parseInt(machineIdTxt.getText());
-            Part part = new InHouse(10, name, price, stock, min, max, machineId);
-            Inventory.addPart(part);
+            if (!Helpers.checkValidInt(machineIdTxt.getText())) {
+                Helpers.showErrorDialog("Machine ID must be a number.");
+            } else {
+                int machineId = Integer.parseInt(machineIdTxt.getText());
+                Part part = new InHouse(10, name, price, stock, min, max, machineId);
+                Inventory.addPart(part);
+            }
+
         } else if (isOutsourced) {
             String companyName = machineIdTxt.getText();
             Part part = new Outsourced(10, name, price, stock, min, max, companyName);

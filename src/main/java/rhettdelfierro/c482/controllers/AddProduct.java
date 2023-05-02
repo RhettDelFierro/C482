@@ -77,6 +77,29 @@ public class AddProduct implements Initializable {
 
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
+        if (!Helpers.checkValidInt(InvLvlTxt.getText())) {
+            Helpers.showErrorDialog("Inventory must be a valid integer.");
+            return;
+        }
+        if (!(Helpers.checkValidInt(minTxt.getText()) && Helpers.checkValidInt(maxTxt.getText()))) {
+            Helpers.showErrorDialog("Min and Max must be a valid integer.");
+            return;
+        }
+        if (Integer.parseInt(minTxt.getText()) > Integer.parseInt(maxTxt.getText())) {
+            Helpers.showErrorDialog("Min must be less than Max.");
+            return;
+        }
+        if ((Integer.parseInt(InvLvlTxt.getText()) < Integer.parseInt(minTxt.getText())) ||
+                (Integer.parseInt(InvLvlTxt.getText())) > Integer.parseInt(maxTxt.getText())
+        ) {
+            Helpers.showErrorDialog("Inventory must be between Min and Max");
+            return;
+        }
+        if (!Helpers.checkValidDouble(priceTxt.getText())) {
+            Helpers.showErrorDialog("Price must be a valid amount.");
+            return;
+        }
+
         Helpers.changeScene(event, "main");
     }
 
@@ -88,10 +111,7 @@ public class AddProduct implements Initializable {
         } else {
             ObservableList<Part> results = Helpers.searchParts(searchText);
             if (results.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Program error.");
-                alert.setContentText("No matching parts found for your search term: " + searchText + ".");
-                alert.showAndWait();
+                Helpers.showErrorDialog("No matching parts found for your search term: " + searchText + ".");
             } else {
                 allPartsTbl.setItems(results);
             }

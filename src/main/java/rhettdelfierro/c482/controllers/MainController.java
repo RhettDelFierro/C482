@@ -129,10 +129,7 @@ public class MainController implements Initializable {
         } else {
             ObservableList<Part> results = Helpers.searchParts(searchText);
             if (results.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Program error.");
-                alert.setContentText("No matching parts found for your search term: " + searchText + ".");
-                alert.showAndWait();
+                Helpers.showErrorDialog("No matching parts found for your search term: " + searchText + ".");
             } else {
                 partsTableView.setItems(results);
             }

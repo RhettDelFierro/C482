@@ -18,7 +18,7 @@ public class ModifyPart implements Initializable {
     private ToggleGroup inHouseOrOutsourced;
 
     @FXML
-    private TextField invNameTxt;
+    private TextField invTxt;
 
     @FXML
     private Label machineIDLabel;
@@ -74,6 +74,39 @@ public class ModifyPart implements Initializable {
      */
     @FXML
     void onActionUpdatePart(ActionEvent event) throws IOException {
+        if (!Helpers.checkValidInt(invTxt.getText())) {
+            Helpers.showErrorDialog("Inventory must be a valid integer.");
+            return;
+        }
+        if (!(Helpers.checkValidInt(minTxt.getText()) && Helpers.checkValidInt(maxTxt.getText()))) {
+            Helpers.showErrorDialog("Min and Max must be a valid integer.");
+            return;
+        }
+        if (Integer.parseInt(minTxt.getText()) > Integer.parseInt(maxTxt.getText())) {
+            Helpers.showErrorDialog("Min must be less than Max.");
+            return;
+        }
+        if ((Integer.parseInt(invTxt.getText()) < Integer.parseInt(minTxt.getText())) ||
+                (Integer.parseInt(invTxt.getText())) > Integer.parseInt(maxTxt.getText())
+        ) {
+            Helpers.showErrorDialog("Inventory must be between Min and Max");
+            return;
+        }
+        if (!Helpers.checkValidDouble(priceTxt.getText())) {
+            Helpers.showErrorDialog("Price must be a valid amount.");
+            return;
+        }
+
+
+        int id = Integer.parseInt(partIdTxt.getText());
+        String name = partNameTxt.getText();
+        int stock = Integer.parseInt(invTxt.getText());
+
+        double price = Double.parseDouble(priceTxt.getText());
+        int min = Integer.parseInt(minTxt.getText());
+        int max = Integer.parseInt(maxTxt.getText());
+        boolean isInHouse = partInHouseRBtn.isSelected();
+        boolean isOutsourced = partOutsourcedRBtn.isSelected();
         Helpers.changeScene(event, "main");
     }
 

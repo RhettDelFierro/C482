@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import rhettdelfierro.c482.models.Inventory;
@@ -53,7 +54,7 @@ public class Helpers {
     public static ObservableList<Part> searchParts(String searchText) {
         ObservableList<Part> parts = Inventory.lookupPart(searchText);
         // defining out the error here by using regex to check for int:
-        if (searchText.matches("^-?\\d+$")) {
+        if (checkValidInt(searchText)) {
             int partId = Integer.parseInt(searchText);
             Part part = Inventory.lookupPart(partId);
             // will only show if there's a matching part name or a matching part id. Not both.
@@ -73,7 +74,7 @@ public class Helpers {
     public static ObservableList<Product> searchProducts(String searchText) {
         ObservableList<Product> products = Inventory.lookupProduct(searchText);
         // defining out the error here by using regex to check for int:
-        if (searchText.matches("^-?\\d+$")) {
+        if (checkValidInt(searchText)) {
             int productId = Integer.parseInt(searchText);
             Product product = Inventory.lookupProduct(productId);
             // will only show if there's a matching product name or a matching product id. Not both.
@@ -82,5 +83,27 @@ public class Helpers {
             }
         }
         return products;
+    }
+
+    public static boolean checkValidInt(String str){
+        return str.matches("^-?\\d+$");
+    }
+
+    public static void showErrorDialog(String message){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Program error.");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static void showWarningDialog(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Continue?");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public static boolean checkValidDouble(String str){
+        return str.matches("^[-+]?\\d*\\.?\\d+$");
     }
 }
