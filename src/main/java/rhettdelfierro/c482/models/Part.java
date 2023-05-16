@@ -1,5 +1,8 @@
 package rhettdelfierro.c482.models;
 
+/**
+ * Abstract class for Part.
+ */
 public abstract class Part {
     private int id;
     private String name;

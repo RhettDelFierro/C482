@@ -3,6 +3,9 @@ package rhettdelfierro.c482.models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Product class.
+ */
 public class Product {
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
     private int id;

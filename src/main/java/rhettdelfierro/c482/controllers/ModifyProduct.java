@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Modify Product page.
+ * RUNTIME ERROR: parseInt() and parseDouble() would throw an IOException here, but we guard against that by using
+ *                the checkValidInt and checkValidDouble helper functions at the top of the methods.
+ */
 public class ModifyProduct implements Initializable {
     @FXML
     private TextField InvLvlTxt;
@@ -195,6 +200,14 @@ public class ModifyProduct implements Initializable {
         associatedPartsPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
+    /**
+     * Initializes the modify product screen.
+     * This method is called automatically when the modify product screen is loaded.
+     * We're mainly using this to populate the all parts table.
+     *
+     * @param url url
+     * @param resourceBundle resource bundle folder
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allPartsTbl.setItems(Inventory.getAllParts());

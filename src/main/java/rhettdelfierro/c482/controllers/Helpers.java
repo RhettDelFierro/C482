@@ -16,7 +16,15 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.Objects;
 
-/** Helpers methods for the app. */
+/**
+ * Helpers methods for the app.
+ *
+ * RUNTIME ERROR: parseInt() would throw errors if the user entered a non-integer value as a string.
+ *                However, by creating checkValidInt and checkValidFloat helper functions  utilize
+ *                regex matching, we're able to check if the user input is valid for that type even
+ *                before parsing it, this way we define out the error and put it on the caller to
+ *                customize the error handling behavior.
+ * */
 public class Helpers {
     /**
      * Helper method to change scenes
@@ -71,6 +79,8 @@ public class Helpers {
      *
      * @param searchText the text to search for
      * @return the list of products
+     * RUNTIME ERROR: parseInt() would throw an IOException here, but we guard against that by using the checkValidInt
+     *                helper functions.
      */
     public static ObservableList<Product> searchProducts(String searchText) {
         ObservableList<Product> products = Inventory.lookupProduct(searchText);

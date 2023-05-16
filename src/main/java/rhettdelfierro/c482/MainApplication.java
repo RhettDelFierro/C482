@@ -11,8 +11,16 @@ import rhettdelfierro.c482.models.Product;
 
 import java.io.IOException;
 
+/**
+ * MainApplication
+ */
 public class MainApplication extends Application {
 
+    /**
+     * Start method for this controller/main application.
+     * @param stage JAVAFX stage object
+     * @throws IOException an IO exception
+     */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/rhettdelfierro/c482/main.fxml"));
@@ -22,6 +30,10 @@ public class MainApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Javadocs located in root directory ./javadocs folder.
+     * @param args command line arguments.
+     */
     public static void main(String[] args) {
         InHouse part1 = new InHouse(1, "Part 1", 1.99, 1, 1, 2, 1);
         InHouse part2 = new InHouse(2, "Part 2", 2.99, 5, 1, 1, 2);

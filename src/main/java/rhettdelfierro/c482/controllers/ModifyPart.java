@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Modify Part page.
+ */
 public class ModifyPart implements Initializable {
 
     @FXML
@@ -75,6 +78,7 @@ public class ModifyPart implements Initializable {
      * Action event handler for clicking the Save Button. This will update and save the part to the inventory
      * data store and reroute the user to the main screen.
      * @param event the action event
+     * @throws IOException an IOException that occurs when parseInt fails.
      */
     @FXML
     void onActionUpdatePart(ActionEvent event) throws IOException {
@@ -156,12 +160,19 @@ public class ModifyPart implements Initializable {
      * Action event handler for clicking the Cancel Button. This will return to the main screen.
      *
      * @param event the action event
+     * @throws IOException an IOException that bubbles up.
      */
     @FXML
     void onActionCancelUpdatePart(ActionEvent event) throws IOException {
         Helpers.changeScene(event, "main");
     }
-
+    /**
+     * Initializes this controller class from implementing the Initializable interface.
+     * Unused here but required for the interface.
+     *
+     * @param url the url
+     * @param resourceBundle the resource bundle folder
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -21,6 +21,9 @@ import java.util.ResourceBundle;
 
 /**
  * MainController Initial screen of the app.
+ *
+ * RUNTIME ERROR: parseInt() would throw an IOException here, but we guard against that by using the checkValidInt
+ *                helper functions.
  */
 public class MainController implements Initializable {
     Stage stage;
@@ -66,7 +69,7 @@ public class MainController implements Initializable {
      * Helper method to change scenes
      *
      * @param event Action event
-     * @throws IOException
+     * @throws IOException and IOException that bubbles up.
      */
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
@@ -77,7 +80,7 @@ public class MainController implements Initializable {
      * Helper method to change scenes
      *
      * @param event Action event
-     * @throws IOException
+     * @throws IOException an IOException that bubbles up.
      */
     @FXML
     void onActionAddProduct(ActionEvent event) throws IOException {
@@ -186,7 +189,7 @@ public class MainController implements Initializable {
      * Helper method to change scenes with selected Part loaded.
      *
      * @param event Action event
-     * @throws IOException
+     * @throws IOException an IOEXception that will throw if the resource fails to fetch.
      */
     @FXML
     public void onActionModifyPart(ActionEvent event) throws IOException {
@@ -206,7 +209,7 @@ public class MainController implements Initializable {
      * Helper method to change scenes with selected Product loaded.
      *
      * @param event Action event
-     * @throws IOException
+     * @throws IOException an IOEXCeption that throws if the resource fails to fetch.
      */
     @FXML
     public void onActionModifyProduct(ActionEvent event) throws IOException {
@@ -222,6 +225,13 @@ public class MainController implements Initializable {
         stage.showAndWait();
     }
 
+    /**
+     * Initializes the controller class.
+     * Populates both tables with init data primarily.
+     *
+     * @param url URL
+     * @param resourceBundle resource bundle folder.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         partsTableView.setItems(Inventory.getAllParts());

@@ -16,6 +16,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * Controller for Add Part page.
+ *
+ * RUNTIME ERROR: parseInt() and parseDouble() would throw an IOException here, but we guard against that by using
+ *                the checkValidInt and checkValidDouble helper functions at the top of the methods.
+ *
  * FUTURE ENHANCEMENT: Rather than have multiple views and controllers for add/modify part,
  * perhaps can have one view and the controller can dynamically update the fields.
  */
@@ -77,6 +82,7 @@ public class AddPart implements Initializable {
      * Action event handler for clicking the Cancel Button. This will return to the main screen.
      *
      * @param event the action event
+     * @throws IOException an IO Exception that bubbles up.
      */
     @FXML
     void onActionCancelAddPart(ActionEvent event) throws IOException {
@@ -88,6 +94,7 @@ public class AddPart implements Initializable {
      * reroute the user to the main screen.
      *
      * @param event the action event
+     * @throws IOException an IOException that is caused if the number parsing throws error.
      */
     @FXML
     void onActionSavePart(ActionEvent event) throws IOException {
@@ -145,6 +152,11 @@ public class AddPart implements Initializable {
         Helpers.changeScene(event, "main");
     }
 
+    /**
+     * Initializes this controller class from implmenting the Initializable interface.
+     * @param url the url
+     * @param resourceBundle the resource bundle folder
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

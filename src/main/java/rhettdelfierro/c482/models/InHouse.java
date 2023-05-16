@@ -1,5 +1,8 @@
 package rhettdelfierro.c482.models;
 
+/**
+ * Class for In-House Part.
+ */
 public class InHouse extends Part {
     private int machineId;
 

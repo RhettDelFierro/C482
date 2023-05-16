@@ -17,6 +17,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for Add Product page.
+ *
+ * RUNTIME ERROR: parseInt() and parseDouble() would throw an IOException here, but we guard against that by using
+ *                the checkValidInt and checkValidDouble helper functions at the top of the methods.
+ */
 public class AddProduct implements Initializable {
     @FXML
     private TextField InvLvlTxt;
@@ -177,6 +183,13 @@ public class AddProduct implements Initializable {
         }
     }
 
+    /**
+     * Initializes this controller class from implmenting the Initializable interface.
+     * This is basically responsible for settings all instance variables and initializing values on the form.
+     *
+     * @param url the url
+     * @param resourceBundle the resource bundle folder
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allPartsTbl.setItems(Inventory.getAllParts());

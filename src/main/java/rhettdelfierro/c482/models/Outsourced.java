@@ -1,5 +1,8 @@
 package rhettdelfierro.c482.models;
 
+/**
+ * Class for Outsourced Part.
+ */
 public class Outsourced extends Part{
     private String companyName;
 
