@@ -32,6 +32,10 @@ public class MainApplication extends Application {
 
     /**
      * Javadocs located in root directory ./javadocs folder.
+     *
+     * FUTURE ENHANCEMENT: Currently all the data is saved in memory.
+     *                     This wipes the data every time we start the application.
+     *                     In the future we can connect a database to fetch and persist data.
      * @param args command line arguments.
      */
     public static void main(String[] args) {

@@ -208,6 +208,12 @@ public class MainController implements Initializable {
     /**
      * Helper method to change scenes with selected Product loaded.
      *
+     * RUNTIME ERROR: at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2516)
+     * at rhettdelfierro.c482/rhettdelfierro.c482.controllers.MainController.onActionModifyProduct(MainController.java:218)
+     *
+     * I gave the wrong filepath for the resource and this caused a runtime error.
+     * I resolved this error by correcting the resource path.
+     *
      * @param event Action event
      * @throws IOException an IOEXCeption that throws if the resource fails to fetch.
      */

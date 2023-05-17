@@ -18,9 +18,8 @@ import java.util.Objects;
 
 /**
  * Helpers methods for the app.
- *
  * RUNTIME ERROR: parseInt() would throw errors if the user entered a non-integer value as a string.
- *                However, by creating checkValidInt and checkValidFloat helper functions  utilize
+ *                However, by creating checkValidInt and checkValidFloat helper functions that utilize
  *                regex matching, we're able to check if the user input is valid for that type even
  *                before parsing it, this way we define out the error and put it on the caller to
  *                customize the error handling behavior.
@@ -140,7 +139,6 @@ public class Helpers {
      * Helper to find the given part by id and return its index from the store.
      * @param id the id of the part to find.
      * @return index of the part in the store.
-     * FUTURE ENHANCEMENT: Could have overloaded with products.
      */
     public static int findIndexForPart(int id) {
         ObservableList<Part> allParts = Inventory.getAllParts();
